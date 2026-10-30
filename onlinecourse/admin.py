@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import (
     Instructor,
     Learner,
@@ -32,6 +33,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
+    list_display = ['question_text']
 
 
 class LessonAdmin(admin.ModelAdmin):
