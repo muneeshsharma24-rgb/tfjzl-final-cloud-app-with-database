@@ -249,6 +249,10 @@ def show_exam_result(request, course_id, submission_id):
     else:
         grade = 0
 
+    selected_ids = list(
+        submission.choices.values_list('id', flat=True)
+    )
+
     context = {
         'course': course,
         'submission': submission,
@@ -258,7 +262,8 @@ def show_exam_result(request, course_id, submission_id):
         'correct': correct,
         'score': score,
         'possible': possible,
-        'grade': grade
+        'grade': grade,
+        'selected_ids': selected_ids
     }
 
     return render(
